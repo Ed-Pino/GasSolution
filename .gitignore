@@ -22,3 +22,11 @@ Thumbs.db
 Docs/Keys.txt
 Docs/*accessKeys*
 Docs/*AccessKey*
+Docs/*.pem
+Docs/clave-ssh*
+
+# Backend logs / data
+backend/data/
+backend/*.log
+backend/backend_err*
+backend/backend_out*
