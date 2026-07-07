@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-azul-energia: #0072CE;
+  --color-azul-pureza: #4DB8FF;
+  --color-naranja-calor: #FF7A00;
+  --color-amarillo-luz: #FFD54F;
+  --color-verde-sostenibilidad: #4CAF50;
+  --color-gris-tecnico: #B0BEC5;
+}
