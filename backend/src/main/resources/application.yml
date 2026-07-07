@@ -1,6 +1,23 @@
 spring:
   application:
     name: ecommerce-gas
+
+server:
+  port: 8081
+
+app:
+  jwt:
+    secret: GasSolutionsBogota2026SecretKeyForJWTTokenGeneration
+    expiration: 86400000
+
+cors:
+  allowed-origins: http://localhost:5173,http://localhost:3000
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
   datasource:
     url: jdbc:h2:file:./data/gassolutions;AUTO_RECONNECT=TRUE;DB_CLOSE_ON_EXIT=TRUE
     username: sa
@@ -18,13 +35,30 @@ spring:
       hibernate:
         format_sql: true
 
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
 server:
   port: 8080
-
-app:
-  jwt:
-    secret: GasSolutionsBogota2026SecretKeyForJWTTokenGeneration
-    expiration: 86400000
-
-cors:
-  allowed-origins: http://localhost:5173,http://localhost:3000
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/gassolutions?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Bogota
+    username: gassolutions
+    password: GasSolutions2026!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
