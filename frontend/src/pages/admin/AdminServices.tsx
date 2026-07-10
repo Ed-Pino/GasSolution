@@ -69,7 +69,7 @@ export default function AdminServices() {
           {services.map(s => (
             <tr key={s.id} className="border-b">
               <td className="p-2">
-                {s.imagenUrl ? <img src={s.imagenUrl} alt={s.nombre} className="w-12 h-12 object-cover rounded" /> : <span className="text-gray-400">—</span>}
+                {s.imagenUrl ? <img src={s.imagenUrl.split(',')[0].trim()} alt={s.nombre} className="w-12 h-12 object-cover rounded" /> : <span className="text-gray-400">—</span>}
               </td>
               <td className="p-2">{s.nombre}</td>
               <td className="p-2">{s.categoriaAplicable || '-'}</td>

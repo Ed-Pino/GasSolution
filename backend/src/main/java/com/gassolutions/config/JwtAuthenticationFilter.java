@@ -10,7 +10,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,9 +27,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
-        ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);
-
-        String header = wrappedRequest.getHeader("Authorization");
+        String header = request.getHeader("Authorization");
 
         if (header != null && header.startsWith("Bearer ")) {
             String token = header.substring(7);
@@ -39,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 Long userId = Long.parseLong(claims.getSubject());
                 String rol = claims.get("rol", String.class);
 
-                wrappedRequest.setAttribute("userId", userId);
+                request.setAttribute("userId", userId);
 
                 UsernamePasswordAuthenticationToken auth =
                         new UsernamePasswordAuthenticationToken(
@@ -49,6 +46,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        filterChain.doFilter(wrappedRequest, response);
+        filterChain.doFilter(request, response);
     }
 }

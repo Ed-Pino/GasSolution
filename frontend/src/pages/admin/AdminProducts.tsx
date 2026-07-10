@@ -73,7 +73,7 @@ export default function AdminProducts() {
           {products.map(p => (
             <tr key={p.id} className="border-b">
               <td className="p-2">
-                {p.imagenUrl ? <img src={p.imagenUrl} alt={p.nombre} className="w-12 h-12 object-cover rounded" /> : <span className="text-gray-400">—</span>}
+                {p.imagenUrl ? <img src={p.imagenUrl.split(',')[0].trim()} alt={p.nombre} className="w-12 h-12 object-cover rounded" /> : <span className="text-gray-400">—</span>}
               </td>
               <td className="p-2">{p.nombre}</td>
               <td className="p-2">{p.categoria}</td>

@@ -210,7 +210,7 @@ export default function HomePage() {
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/llama.jpg" alt="Mantenimiento preventivo" className="w-full h-72 object-cover" />
+            <img src="/images/tecnico-1.png" alt="Mantenimiento preventivo" className="w-full h-72 object-cover" />
           </div>
           <div className="md:w-1/2">
             <span className="text-orange-500 text-sm font-semibold uppercase tracking-wider">Mantenimiento</span>
@@ -237,7 +237,7 @@ export default function HomePage() {
       <section className="py-20 px-6 max-w-5xl mx-auto bg-gray-50 rounded-3xl">
         <div className="flex flex-col md:flex-row-reverse items-center gap-12 px-4">
           <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/tecnico.jpg" alt="Reparación profesional" className="w-full h-72 object-cover" />
+            <img src="/images/tecnico2.png" alt="Reparación profesional" className="w-full h-72 object-cover" />
           </div>
           <div className="md:w-1/2">
             <span className="text-red-600 text-sm font-semibold uppercase tracking-wider">Reparación</span>

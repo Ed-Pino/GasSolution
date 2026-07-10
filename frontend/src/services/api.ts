@@ -9,10 +9,17 @@ api.interceptors.request.use((config) => {
   return config
 })
 
+function uuidv4(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+  })
+}
+
 function getSessionId(): string {
   let sid = localStorage.getItem('sessionId')
   if (!sid) {
-    sid = crypto.randomUUID()
+    sid = typeof crypto?.randomUUID === 'function' ? crypto.randomUUID() : uuidv4()
     localStorage.setItem('sessionId', sid)
   }
   return sid

@@ -40,13 +40,6 @@ spring:
   config:
     activate:
       on-profile: prod
-server:
-  port: 8080
----
-spring:
-  config:
-    activate:
-      on-profile: prod
   datasource:
     url: jdbc:mysql://localhost:3306/gassolutions?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=America/Bogota
     username: gassolutions
@@ -62,3 +55,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080

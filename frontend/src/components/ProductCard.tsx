@@ -15,11 +15,21 @@ export default function ProductCard({ product }: { product: Product }) {
   const { addItem } = useCart()
   const images = (product.imagenUrl || '').split(',').map(s => s.trim()).filter(Boolean)
   const [imgIdx, setImgIdx] = useState(0)
+  const [adding, setAdding] = useState(false)
 
   const handleAdd = async (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
-    await addItem('PRODUCT', product.id)
+    if (adding) return
+    setAdding(true)
+    try {
+      await addItem('PRODUCT', product.id)
+    } catch (err) {
+      console.error('Error agregando al carrito:', err)
+      alert('Error al agregar al carrito. Revisa la consola (F12).')
+    } finally {
+      setAdding(false)
+    }
   }
 
   return (
@@ -65,9 +75,10 @@ export default function ProductCard({ product }: { product: Product }) {
           </p>
           <button
             onClick={handleAdd}
-            className="w-full sm:w-auto bg-blue-800 hover:bg-blue-900 text-white text-sm font-semibold px-4 py-2.5 sm:py-2 rounded-full transition-colors whitespace-nowrap"
+            disabled={adding}
+            className={`w-full sm:w-auto text-white text-sm font-semibold px-4 py-2.5 sm:py-2 rounded-full transition-colors whitespace-nowrap ${adding ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-800 hover:bg-blue-900'}`}
           >
-            + Agregar
+            {adding ? 'Agregando...' : '+ Agregar'}
           </button>
         </div>
       </div>
