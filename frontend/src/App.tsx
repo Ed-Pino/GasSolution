@@ -4,6 +4,7 @@ import { CartProvider } from './context/CartContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import CallButton from './components/CallButton'
 import HomePage from './pages/HomePage'
 import ProductsPage from './pages/ProductsPage'
 import ProductDetailPage from './pages/ProductDetailPage'
@@ -37,6 +38,7 @@ export default function App() {
           </main>
           <Footer />
           <WhatsAppButton />
+          <CallButton />
         </div>
       </CartProvider>
     </AuthProvider>

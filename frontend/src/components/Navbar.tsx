@@ -17,10 +17,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/images/logo.png" alt="GasSolutions" className="h-10 w-auto" />
-            <div className="hidden sm:block">
-              <p className="text-base font-bold leading-tight">GasSolutions</p>
-              <p className="text-xs text-blue-200 leading-tight">Bogotá · 314 253 3524</p>
+            <img src="/images/logo.png" alt="GasSolutions" className="h-12 w-auto" />
+            <div>
+              <p className="text-sm sm:text-base font-bold leading-tight">GasSolutions</p>
+              <p className="text-[10px] sm:text-xs text-blue-200 leading-tight">Bogotá · 314 253 3524</p>
             </div>
           </Link>
 

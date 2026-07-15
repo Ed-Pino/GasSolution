@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+const maintImages = ['tec1.webp', 'ServTest.jpg', 'Image-2025-05-1.jpeg']
+const repImages = ['tecnico2.png', 'tecnico-1.png', 'RheemTec.png', 'gas2-150x150.jpg']
+const heroImages = [
+  '/images/woman-shower.jpg',
+  '/images/images4-150x150.jpg',
+  '/images/images-_2_-150x150.png',
+  '/images/images-_3_-e1635201813391.png',
+  '/images/mujer-tina.jpg',
+]
+
 const categoryCards = [
   { label: 'Calentadores', emoji: '🚿', color: 'from-blue-500 to-blue-700', href: '/products?categoria=Calentadores' },
   { label: 'Estufas', emoji: '🍳', color: 'from-orange-400 to-orange-600', href: '/products?categoria=Estufas' },
@@ -37,38 +47,39 @@ const brandLogos = [
 ]
 
 export default function HomePage() {
-  const [brandIndex, setBrandIndex] = useState(0)
-  const [clientIndex, setClientIndex] = useState(0)
-  const visibleCount = 4
+  const [heroIdx, setHeroIdx] = useState(0)
+  const [maintIdx, setMaintIdx] = useState(0)
+  const [repIdx, setRepIdx] = useState(0)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setBrandIndex(i => (i + 1) % brandLogos.length)
-    }, 2500)
-    return () => clearInterval(timer)
+    const t = setInterval(() => setHeroIdx(i => (i + 1) % heroImages.length), 4000)
+    return () => clearInterval(t)
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setClientIndex(i => (i + 1) % clientLogos.length)
-    }, 2500)
-    return () => clearInterval(timer)
+    const t = setInterval(() => setMaintIdx(i => (i + 1) % maintImages.length), 4000)
+    return () => clearInterval(t)
   }, [])
 
-  const visibleBrands = Array.from({ length: visibleCount }, (_, i) =>
-    brandLogos[(brandIndex + i) % brandLogos.length]
-  )
-
-  const visibleClients = Array.from({ length: visibleCount }, (_, i) =>
-    clientLogos[(clientIndex + i) % clientLogos.length]
-  )
+  useEffect(() => {
+    const t = setInterval(() => setRepIdx(i => (i + 1) % repImages.length), 4000)
+    return () => clearInterval(t)
+  }, [])
 
   return (
     <div>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section
-        className="relative min-h-[520px] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/woman-shower.jpg)' }}>
+      <section className="relative min-h-[520px] flex items-center justify-center overflow-hidden">
+        {heroImages.map((src, i) => (
+          <div
+            key={src}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+            style={{
+              backgroundImage: `url(${src})`,
+              opacity: i === heroIdx ? 1 : 0,
+            }}
+          />
+        ))}
         <div className="absolute inset-0 bg-blue-950/70" />
         <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto">
           <span className="inline-block bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
@@ -158,59 +169,36 @@ export default function HomePage() {
       </section>
 
       {/* ── BRANDS / MARCAS ──────────────────────────────────── */}
-      <section className="py-16 px-6 text-center max-w-5xl mx-auto">
-        <p className="text-gray-400 text-sm uppercase tracking-widest mb-8">Trabajamos con las mejores marcas</p>
-        <div className="relative flex items-center justify-center gap-2">
-          <button
-            onClick={() => setBrandIndex(i => (i - 1 + brandLogos.length) % brandLogos.length)}
-            className="shrink-0 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-            aria-label="Anterior"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <div className="flex items-center justify-center gap-8 overflow-hidden flex-1">
-            {visibleBrands.map((brand, i) => (
-              <div key={`${brand.alt}-${i}`} className="flex items-center justify-center w-32 h-20 shrink-0">
+      <section className="py-16 px-6 text-center max-w-5xl mx-auto overflow-hidden">
+        <p className="text-gray-400 text-base uppercase tracking-widest mb-8">Trabajamos con las mejores marcas</p>
+        <div className="marquee-wrapper relative overflow-hidden w-full">
+          <div className="marquee-track flex gap-16" style={{ width: 'fit-content' }}>
+            {[...brandLogos, ...brandLogos].map((brand, i) => (
+              <div key={i} className="flex items-center justify-center w-44 h-28 shrink-0">
                 <img
                   src={brand.src}
                   alt={brand.alt}
-                  className="max-h-16 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                  className="max-h-24 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             ))}
           </div>
-
-          <button
-            onClick={() => setBrandIndex(i => (i + 1) % brandLogos.length)}
-            className="shrink-0 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-            aria-label="Siguiente"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-6">
-          {brandLogos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setBrandIndex(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === brandIndex ? 'bg-blue-800' : 'bg-gray-300'}`}
-              aria-label={`Marca ${i + 1}`}
-            />
-          ))}
         </div>
       </section>
 
       {/* ── MAINTENANCE ──────────────────────────────────────── */}
       <section className="py-20 px-6 max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/tecnico-1.png" alt="Mantenimiento preventivo" className="w-full h-72 object-cover" />
+          <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl relative h-72 bg-gray-100">
+            {maintImages.map((img, i) => (
+              <img
+                key={img}
+                src={`/images/${img}`}
+                alt="Mantenimiento preventivo"
+                className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-1000"
+                style={{ opacity: i === maintIdx ? 1 : 0 }}
+              />
+            ))}
           </div>
           <div className="md:w-1/2">
             <span className="text-orange-500 text-sm font-semibold uppercase tracking-wider">Mantenimiento</span>
@@ -236,8 +224,16 @@ export default function HomePage() {
       {/* ── REPAIR ───────────────────────────────────────────── */}
       <section className="py-20 px-6 max-w-5xl mx-auto bg-gray-50 rounded-3xl">
         <div className="flex flex-col md:flex-row-reverse items-center gap-12 px-4">
-          <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl">
-            <img src="/images/tecnico2.png" alt="Reparación profesional" className="w-full h-72 object-cover" />
+          <div className="w-full md:w-1/2 rounded-2xl overflow-hidden shadow-xl relative h-72 bg-gray-100">
+            {repImages.map((img, i) => (
+              <img
+                key={img}
+                src={`/images/${img}`}
+                alt="Reparación profesional"
+                className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-1000"
+                style={{ opacity: i === repIdx ? 1 : 0 }}
+              />
+            ))}
           </div>
           <div className="md:w-1/2">
             <span className="text-red-600 text-sm font-semibold uppercase tracking-wider">Reparación</span>
@@ -264,51 +260,20 @@ export default function HomePage() {
       </section>
 
       {/* ── CLIENTES ─────────────────────────────────────────── */}
-      <section className="py-16 px-6 text-center max-w-5xl mx-auto">
-        <p className="text-gray-400 text-sm uppercase tracking-widest mb-8">Nuestros Clientes Confían en Nosotros</p>
-        <div className="relative flex items-center justify-center gap-2">
-          <button
-            onClick={() => setClientIndex(i => (i - 1 + clientLogos.length) % clientLogos.length)}
-            className="shrink-0 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-            aria-label="Anterior"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-
-          <div className="flex items-center justify-center gap-8 overflow-hidden flex-1">
-            {visibleClients.map((client, i) => (
-              <div key={`${client.alt}-${i}`} className="flex items-center justify-center w-32 h-20 shrink-0">
+      <section className="py-16 px-6 text-center max-w-5xl mx-auto overflow-hidden">
+        <p className="text-gray-400 text-base uppercase tracking-widest mb-8">Nuestros Clientes Confían en Nosotros</p>
+        <div className="marquee-wrapper relative overflow-hidden w-full">
+          <div className="marquee-track flex gap-16" style={{ width: 'fit-content' }}>
+            {[...clientLogos, ...clientLogos].map((client, i) => (
+              <div key={i} className="flex items-center justify-center w-44 h-28 shrink-0">
                 <img
                   src={client.src}
                   alt={client.alt}
-                  className="max-h-16 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                  className="max-h-24 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
             ))}
           </div>
-
-          <button
-            onClick={() => setClientIndex(i => (i + 1) % clientLogos.length)}
-            className="shrink-0 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
-            aria-label="Siguiente"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-6">
-          {clientLogos.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setClientIndex(i)}
-              className={`w-2 h-2 rounded-full transition-colors ${i === clientIndex ? 'bg-orange-500' : 'bg-gray-300'}`}
-              aria-label={`Cliente ${i + 1}`}
-            />
-          ))}
         </div>
       </section>
 
