@@ -40,7 +40,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <img
               src={images[imgIdx]}
               alt={product.nombre}
-              className="w-full h-48 sm:h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              className=" w-full h-auto min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {images.length > 1 && (
               <div className="absolute bottom-1 right-2 flex gap-1">

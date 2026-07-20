@@ -23,6 +23,12 @@ export default function Navbar() {
               <p className="text-[10px] sm:text-xs text-blue-200 leading-tight">Bogotá · 314 253 3524</p>
             </div>
           </Link>
+          <div>
+            <img src="/images/logo gas natural.png" alt="GasSolutions" className="h-12 w-auto" />
+          </div>
+          <div>
+            <img src="/images/vanti-logo.jpg" alt="GasSolutions" className="h-12 w-auto" />
+          </div>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
