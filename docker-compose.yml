@@ -1,0 +1,39 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: gassolutions-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root2026
+      MYSQL_DATABASE: gassolutions
+      MYSQL_USER: gassolutions
+      MYSQL_PASSWORD: GasSolutions2026!
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    mem_limit: 512m
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gassolutions-backend
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      mysql:
+        condition: service_healthy
+    mem_limit: 512m
+
+volumes:
+  mysql_data:

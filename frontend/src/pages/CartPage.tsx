@@ -11,9 +11,9 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="text-center py-24 px-6">
-        <span className="text-7xl block mb-6">🛒</span>
-        <h1 className="text-3xl font-bold text-blue-900 mb-3">Tu carrito está vacío</h1>
+      <div className="text-center py-12 sm:py-24 px-4 sm:px-6">
+        <span className="text-5xl sm:text-7xl block mb-4 sm:mb-6">🛒</span>
+        <h1 className="text-2xl sm:text-3xl font-bold text-blue-900 mb-3">Tu carrito está vacío</h1>
         <p className="text-gray-500 mb-8">Agrega productos o servicios para continuar</p>
         <div className="flex flex-wrap justify-center gap-4">
           <Link to="/products" className="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-8 py-3 rounded-full transition-colors">
@@ -47,9 +47,9 @@ export default function CartPage() {
         {/* Items list */}
         <div className="md:col-span-2 space-y-3">
           {items.map(item => (
-            <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-4 flex items-center gap-4 shadow-sm">
+            <div key={item.id} className="bg-white border border-gray-200 rounded-2xl p-4 flex items-center gap-2 sm:gap-4 flex-wrap shadow-sm">
               <div
-                className={`h-14 w-14 rounded-xl flex items-center justify-center text-2xl shrink-0 ${
+                className={`h-12 w-12 sm:h-14 sm:w-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl shrink-0 ${
                   item.itemType === 'SERVICE' ? 'bg-green-50' : 'bg-blue-50'
                 }`}
               >
@@ -83,7 +83,7 @@ export default function CartPage() {
                   +
                 </button>
               </div>
-              <p className="text-base font-bold text-gray-800 w-24 text-right shrink-0">
+              <p className="text-sm sm:text-base font-bold text-gray-800 w-16 sm:w-24 text-right shrink-0">
                 ${item.subtotal.toLocaleString('es-CO')}
               </p>
               <button

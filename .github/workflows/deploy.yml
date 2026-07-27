@@ -1,0 +1,61 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Build backend JAR
+        run: |
+          cd backend
+          mvn clean package -DskipTests -q
+
+      - name: Deploy to EC2
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: |
+            frontend/dist/index.html
+            frontend/dist/assets/
+            frontend/dist/images/
+            backend/target/ecommerce-gas-0.0.1-SNAPSHOT.jar
+          target: /home/ubuntu/ecommerce-gas
+          strip_components: 0
+
+      - name: Restart backend on EC2
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo kill $(pgrep -f 'spring.profiles.active=prod') 2>/dev/null
+            sleep 3
+            cd /home/ubuntu/ecommerce-gas
+            nohup java -Xmx256m -Xms128m -jar backend/target/ecommerce-gas-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod > backend/app.log 2>&1 &
+            sleep 10
+            sudo systemctl reload nginx || true

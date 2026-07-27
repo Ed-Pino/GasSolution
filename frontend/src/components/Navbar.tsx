@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/images/logo.png" alt="GasSolutions" className="h-12 w-auto" />
+            <img src="/images/favicon.png" alt="GasSolutions" className="h-12 w-auto" />
             <div>
               <p className="text-sm sm:text-base font-bold leading-tight">GasSolutions</p>
               <p className="text-[10px] sm:text-xs text-blue-200 leading-tight">Bogotá · 314 253 3524</p>
@@ -32,6 +32,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-6">
+            <NavLink to="/about" className={navLinkClass}>Nosotros</NavLink>
             <NavLink to="/products" className={navLinkClass}>Productos</NavLink>
             <NavLink to="/services" className={navLinkClass}>Servicios</NavLink>
 
@@ -107,6 +108,7 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-blue-900 px-4 pb-4 space-y-1">
+          <NavLink to="/about" className={() => 'block py-3 px-2 text-sm font-medium text-white hover:text-yellow-200'} onClick={() => setMenuOpen(false)}>Nosotros</NavLink>
           <NavLink to="/products" className={() => 'block py-3 px-2 text-sm font-medium text-white hover:text-yellow-200'} onClick={() => setMenuOpen(false)}>Productos</NavLink>
           <NavLink to="/services" className={() => 'block py-3 px-2 text-sm font-medium text-white hover:text-yellow-200'} onClick={() => setMenuOpen(false)}>Servicios</NavLink>
           {isAdmin && <NavLink to="/admin" className={() => 'block py-3 px-2 text-sm font-medium text-yellow-300'} onClick={() => setMenuOpen(false)}>Admin</NavLink>}
