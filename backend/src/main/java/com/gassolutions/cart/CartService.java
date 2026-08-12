@@ -9,12 +9,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 @Service
 public class CartService {
 
     private final Map<String, List<CartEntry>> carts = new ConcurrentHashMap<>();
+    private final AtomicLong idSequence = new AtomicLong(1);
     private final ProductRepository productRepository;
     private final ServiceRepository serviceRepository;
 
@@ -44,7 +46,7 @@ public class CartService {
         } else {
             String nombre = getItemName(itemType, itemId);
             Double price = getItemPrice(itemType, itemId);
-            entries.add(new CartEntry(UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE,
+            entries.add(new CartEntry(idSequence.getAndIncrement(),
                     itemType, itemId, nombre, price, quantity));
         }
 
