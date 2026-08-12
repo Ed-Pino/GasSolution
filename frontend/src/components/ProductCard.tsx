@@ -40,6 +40,8 @@ export default function ProductCard({ product }: { product: Product }) {
             <img
               src={images[imgIdx]}
               alt={`${product.nombre} - ${product.categoria} en GasSolutions Bogotá`}
+              loading="lazy"
+              decoding="async"
               className=" w-full h-auto min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {images.length > 1 && (

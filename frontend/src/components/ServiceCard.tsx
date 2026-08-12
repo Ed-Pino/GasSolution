@@ -31,6 +31,8 @@ export default function ServiceCard({ service }: { service: Service }) {
           <img
             src={images[imgIdx]}
             alt={`${service.nombre} - Servicio técnico de gas en Bogotá GasSolutions`}
+            loading="lazy"
+            decoding="async"
             className="w-full h-40 sm:h-52 object-contain"
           />
           {images.length > 1 && (

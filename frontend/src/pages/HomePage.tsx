@@ -183,6 +183,8 @@ export default function HomePage() {
                 <img
                   src={brand.src}
                   alt={brand.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-24 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
@@ -274,6 +276,8 @@ export default function HomePage() {
                 <img
                   src={client.src}
                   alt={client.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-24 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>
