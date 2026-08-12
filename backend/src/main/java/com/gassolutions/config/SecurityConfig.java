@@ -40,6 +40,7 @@ public class SecurityConfig {
                     "/api/services/**",
                     "/api/cart/**",
                     "/api/orders/**",
+                    "/sitemap.xml",
                     "/h2-console/**"
                 ).permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
