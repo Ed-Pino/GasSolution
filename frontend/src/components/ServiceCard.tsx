@@ -30,7 +30,7 @@ export default function ServiceCard({ service }: { service: Service }) {
         <div className="relative bg-gray-50">
           <img
             src={images[imgIdx]}
-            alt={service.nombre}
+            alt={`${service.nombre} - Servicio técnico de gas en Bogotá GasSolutions`}
             className="w-full h-40 sm:h-52 object-contain"
           />
           {images.length > 1 && (

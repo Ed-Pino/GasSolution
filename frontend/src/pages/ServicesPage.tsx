@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { serviceService } from '../services/api'
 import ServiceCard from '../components/ServiceCard'
+import Seo from '../components/Seo'
 import type { Service } from '../types'
 
 const filterCategories = [
@@ -41,8 +42,27 @@ export default function ServicesPage() {
         s.descripcion.toLowerCase().includes(search.toLowerCase()))
     )
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Servicios Técnicos de Gas GasSolutions Bogotá',
+    numberOfItems: filtered.length,
+    itemListElement: filtered.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://gassolutions.duckdns.org/services`,
+      name: s.nombre,
+    })),
+  }
+
   return (
     <div className="py-10 px-4 max-w-7xl mx-auto">
+      <Seo
+        title="Servicios Técnicos de Gas en Bogotá | GasSolutions"
+        description="Instalación, mantenimiento, revisión y reparación de calentadores, estufas y redes de gas natural en Bogotá. Técnicos certificados NTC con garantía."
+        path="/services"
+        jsonLd={itemListJsonLd}
+      />
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-blue-900">Servicios Técnicos</h1>

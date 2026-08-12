@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 
 export default function AboutPage() {
   return (
     <div className="py-12 px-4 max-w-4xl mx-auto">
+      <Seo
+        title="Sobre Nosotros | GasSolutions Bogotá"
+        description="GasSolutions es una empresa especializada en la venta, instalación y mantenimiento de equipos a gas natural en Bogotá. Conozca nuestra misión, visión y servicios."
+        path="/about"
+      />
       <h1 className="text-3xl font-bold text-blue-900 mb-2">Sobre Nosotros</h1>
       <p className="text-gray-500 mb-8">Conoce más sobre GasSolutions</p>
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { productService, serviceService } from '../services/api'
 import { useCart } from '../context/CartContext'
+import Seo from '../components/Seo'
 import type { Product, Service } from '../types'
 
 const categoryEmoji: Record<string, string> = {
@@ -57,8 +58,38 @@ export default function ProductDetailPage() {
     setTimeout(() => setAdded(false), 2500)
   }
 
+  const firstImage = images[0] || '/images/logo.png'
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.nombre,
+    image: images.map(i => `https://gassolutions.duckdns.org${i}`),
+    description: product.descripcion || `Gasodoméstico certificado en Bogotá con garantía.`,
+    category: product.categoria,
+    sku: String(product.id),
+    brand: {
+      '@type': 'Brand',
+      name: 'GasSolutions Bogotá',
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'COP',
+      price: product.precioCOP,
+      availability: 'https://schema.org/InStock',
+      url: `https://gassolutions.duckdns.org/products/${product.id}`,
+      itemCondition: 'https://schema.org/NewCondition',
+    },
+  }
+
   return (
     <div className="py-10 px-4 max-w-5xl mx-auto">
+      <Seo
+        title={`${product.nombre} | GasSolutions Bogotá`}
+        description={`${product.nombre} — $${product.precioCOP.toLocaleString('es-CO')}. ${product.descripcion || 'Gasodoméstico certificado en Bogotá con garantía.'}`}
+        path={`/products/${product.id}`}
+        image={firstImage}
+        jsonLd={productJsonLd}
+      />
       {/* Breadcrumb */}
       <nav className="text-sm text-gray-400 mb-6 flex items-center gap-2">
         <Link to="/products" className="hover:text-blue-700 transition-colors">Productos</Link>
@@ -75,7 +106,7 @@ export default function ProductDetailPage() {
             <>
               <img
                 src={images[imgIndex]}
-                alt={product.nombre}
+                alt={`${product.nombre} - ${product.categoria} certificado en Bogotá`}
                 className="w-full h-full object-cover"
                 onError={() => setImgIndex(i => Math.min(i + 1, images.length - 1))}
               />

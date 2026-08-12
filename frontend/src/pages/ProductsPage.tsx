@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { productService } from '../services/api'
 import ProductCard from '../components/ProductCard'
+import Seo from '../components/Seo'
 import type { Product } from '../types'
 
 const categories = ['Calentadores', 'Estufas', 'Hornos', 'Insumos', 'Repuestos']
@@ -39,8 +40,27 @@ export default function ProductsPage() {
     selectCategory(activeCat)
   }
 
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Catálogo de Gasodomésticos GasSolutions Bogotá',
+    numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://gassolutions.duckdns.org/products/${p.id}`,
+      name: p.nombre,
+    })),
+  }
+
   return (
     <div className="py-10 px-4 max-w-7xl mx-auto">
+      <Seo
+        title={`Calentadores, Estufas y Gasodomésticos${activeCat ? ' de ' + activeCat : ''} | GasSolutions`}
+        description="Venta de calentadores a gas, estufas, hornos y repuestos certificados en Bogotá. Encuentra las mejores marcas (Bosch, Challenger, Rheem) con garantía."
+        path="/products"
+        jsonLd={itemListJsonLd}
+      />
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-blue-900">Catálogo de Productos</h1>

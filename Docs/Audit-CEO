@@ -1,0 +1,58 @@
+Una auditoría SEO se divide en 4 pilares esenciales: **Técnico**, **On-Page**, **Experiencia de Usuario / Velocidad** y **Off-Page**.
+
+A continuación tienes un esquema de auditoría paso a paso y la estrategia clave para mejorar el posicionamiento de tu sitio web en Google Chrome y demás motores de búsqueda:
+
+---
+
+### Fase 1: Auditoría SEO (Diagnóstico)
+
+#### 1. SEO Técnico y Rastreabilidad
+
+* **Indexación y Rastreo:** Revisa en Google Search Console (GSC) que Google pueda leer tu sitio. Comprueba que el archivo `robots.txt` no esté bloqueando páginas importantes.
+* **Sitemap XML:** Asegúrate de que el archivo `sitemap.xml` esté actualizado, enviado en GSC y contenga solo URLs con estado 200 (sin páginas rotas o redirecciones).
+* **Etiquetas Canónicas (`rel="canonical"`):** Verifica que cada página apunte a su versión principal para evitar penalizaciones por contenido duplicado.
+* **Protocolo HTTPS / SSL:** Confirma que la web sea 100% segura y redirija todo el tráfico HTTP a HTTPS.
+
+#### 2. SEO On-Page (Contenido y Estructura)
+
+* **Title Tags y Meta Descriptions:** Cada página debe tener un título único (menor a 60 caracteres) con la palabra clave principal y una meta descripción atractiva que incentive el clic (CTR).
+* **Jerarquía de Encabezados (H1, H2, H3):** Un único `H1` por página que responda a la búsqueda del usuario, seguido de `H2` y `H3` organizados de forma lógica.
+* **Optimización de Imágenes:** Asegúrate de que las imágenes tengan texto alternativo (`alt=""`) descriptivo y estén comprimidas en formatos modernos como `.webp`.
+* **Enlaces Internos:** Conecta tus páginas internas mediante hipervínculos relevantes para distribuir la autoridad del sitio.
+
+#### 3. Rendimiento y Experiencia (Core Web Vitals)
+
+* **Velocidad de carga (LCP):** El contenido principal de la página debe cargar en menos de 2.5 segundos.
+* **Interactividad (INP):** El sitio debe responder rápido al clic o toque del usuario (menos de 200 ms).
+* **Estabilidad visual (CLS):** Los elementos del sitio no deben moverse bruscamente mientras carga la página.
+* **Adaptabilidad Móvil (Mobile-First):** La web debe ajustarse sin fallos a pantallas de teléfonos celulares.
+
+#### 4. Autoridad y SEO Off-Page
+
+* **Perfil de Enlaces (Backlinks):** Analiza los sitios web externos que apuntan hacia el tuyo.
+* **SEO Local:** Si atiendes en una ciudad o zona específica, asegúrate de tener una ficha optimizada en **Google Business Profile** con información coincidente (Nombre, Dirección, Teléfono).
+
+---
+
+### Fase 2: Cómo Subir Posiciones en Buscadores
+
+1. **Ataca la Intención de Búsqueda (*Search Intent*):**
+Crea o reescribe tu contenido pensando exactamente en lo que el usuario quiere resolver (comprar, informarse, comparar) y no solo en repetir palabras clave.
+2. **Aplica Marcado de Datos Estructurados (Schema.org):**
+Implementa marcado de datos para productos, servicios, valoraciones o preguntas frecuentes (FAQ). Esto ayuda a los buscadores a entender tu contenido y mostrar fragmentos enriquecidos (*rich snippets*).
+3. **Optimiza para Motores de Inteligencia Artificial (AEO / GEO):**
+Responde preguntas directas de forma clara y concisa (en listas, tablas o párrafos directos) para aparecer en los resúmenes generados por la IA de Google y otros buscadores.
+4. **Mejora el CTR (*Click-Through Rate*):**
+Redacta títulos impactantes y agrega llamadas a la acción (*Call to Action*) para destacar frente a los competidores en los resultados de búsqueda.
+5. **Construye Backlinks de Calidad:**
+Obtén enlaces entrantes desde portales del mismo sector, prensa local o mediante alianzas comerciales estratégicas.
+
+---
+
+### Herramientas Gratuitas Recomendadas para Comenzar
+
+* **[Google Search Console](https://search.google.com/search-console):** Para revisar indexación, errores técnicos y palabras clave que te traen tráfico.
+* **[Google PageSpeed Insights](https://pagespeed.web.dev/):** Para analizar y medir las Core Web Vitals de tu sitio web.
+* **Screaming Frog SEO Spider:** Aplicación para rastrear tu sitio y detectar enlaces rotos, títulos duplicados o etiquetas faltantes.
+
+¿Deseas que audite detalladamente las páginas de tu sitio web actual o alguna sección en específico?

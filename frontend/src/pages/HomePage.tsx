@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 
 const maintImages = ['tec1.webp', 'ServTest.jpg', 'Image-2025-05-1.jpeg']
 const repImages = ['tecnico2.png', 'tecnico-1.png', 'RheemTec.png', 'gas2-150x150.jpg']
@@ -68,7 +69,11 @@ export default function HomePage() {
 
   return (
     <div>
-      {/* ── HERO ─────────────────────────────────────────────── */}
+      <Seo
+        title="GasSolutions Bogotá | Ventas e Instalación de Gas Natural"
+        description="Venta, instalación y mantenimiento de calentadores, estufas, hornos y gasodomésticos a gas natural en Bogotá. Técnicos certificados NTC. Llamanos al 314 253 3524."
+        path="/"
+      />
       <section className="relative min-h-[520px] flex items-center justify-center overflow-hidden">
         {heroImages.map((src, i) => (
           <div

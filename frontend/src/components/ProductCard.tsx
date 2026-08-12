@@ -39,7 +39,7 @@ export default function ProductCard({ product }: { product: Product }) {
           <div className="relative">
             <img
               src={images[imgIdx]}
-              alt={product.nombre}
+              alt={`${product.nombre} - ${product.categoria} en GasSolutions Bogotá`}
               className=" w-full h-auto min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {images.length > 1 && (
