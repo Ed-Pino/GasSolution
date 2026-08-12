@@ -17,17 +17,17 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <img src="/images/favicon.png" alt="GasSolutions" className="h-12 w-auto" />
+            <img src="/images/favicon.png" alt="Logo GasSolutions" className="h-12 w-auto" width={120} height={48} decoding="async" />
             <div>
               <p className="text-sm sm:text-base font-bold leading-tight">GasSolutions</p>
               <p className="text-[10px] sm:text-xs text-blue-200 leading-tight">Bogotá · 314 253 3524</p>
             </div>
           </Link>
           <div>
-            <img src="/images/logo gas natural.png" alt="GasSolutions" className="h-12 w-auto" />
+            <img src="/images/logo gas natural.png" alt="Logo Gas Natural" className="h-12 w-auto" width={120} height={48} decoding="async" />
           </div>
           <div>
-            <img src="/images/vanti-logo.jpg" alt="GasSolutions" className="h-12 w-auto" />
+            <img src="/images/vanti-logo.jpg" alt="Logo Vanti" className="h-12 w-auto" width={120} height={48} decoding="async" />
           </div>
 
           {/* Desktop nav */}
