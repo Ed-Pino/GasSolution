@@ -202,6 +202,10 @@ export default function HomePage() {
                 key={img}
                 src={`/images/${img}`}
                 alt="Mantenimiento preventivo"
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={600}
                 className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-1000"
                 style={{ opacity: i === maintIdx ? 1 : 0 }}
               />
@@ -237,6 +241,10 @@ export default function HomePage() {
                 key={img}
                 src={`/images/${img}`}
                 alt="Reparación profesional"
+                loading="lazy"
+                decoding="async"
+                width={800}
+                height={600}
                 className="absolute inset-0 w-full h-full object-contain p-4 transition-opacity duration-1000"
                 style={{ opacity: i === repIdx ? 1 : 0 }}
               />

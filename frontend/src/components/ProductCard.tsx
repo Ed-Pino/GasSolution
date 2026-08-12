@@ -42,13 +42,16 @@ export default function ProductCard({ product }: { product: Product }) {
               alt={`${product.nombre} - ${product.categoria} en GasSolutions Bogotá`}
               loading="lazy"
               decoding="async"
+              width={800}
+              height={800}
               className=" w-full h-auto min-h-[250px] object-cover group-hover:scale-105 transition-transform duration-300"
             />
             {images.length > 1 && (
               <div className="absolute bottom-1 right-2 flex gap-1">
                 {images.map((_, i) => (
-                  <button key={i} onClick={e => { e.preventDefault(); e.stopPropagation(); setImgIdx(i) }}
-                    className={`w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full ${i === imgIdx ? 'bg-white' : 'bg-white/50'}`} />
+<button key={i} onClick={e => { e.preventDefault(); e.stopPropagation(); setImgIdx(i) }}
+                  aria-label={`Ver imagen ${i + 1} de ${product.nombre}`}
+                  className={`w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full ${i === imgIdx ? 'bg-white' : 'bg-white/50'}`} />
                 ))}
               </div>
             )}

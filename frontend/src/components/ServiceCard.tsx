@@ -33,12 +33,15 @@ export default function ServiceCard({ service }: { service: Service }) {
             alt={`${service.nombre} - Servicio técnico de gas en Bogotá GasSolutions`}
             loading="lazy"
             decoding="async"
+            width={800}
+            height={600}
             className="w-full h-40 sm:h-52 object-contain"
           />
           {images.length > 1 && (
             <div className="absolute bottom-1.5 right-2 flex gap-1">
               {images.map((_, i) => (
                 <button key={i} onClick={() => setImgIdx(i)}
+                  aria-label={`Ver imagen ${i + 1} de ${service.nombre}`}
                   className={`w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full ${i === imgIdx ? 'bg-white' : 'bg-white/50'}`} />
               ))}
             </div>

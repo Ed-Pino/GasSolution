@@ -113,12 +113,15 @@ export default function ProductDetailPage() {
               {images.length > 1 && (
                 <>
                   <button onClick={() => setImgIndex(i => (i - 1 + images.length) % images.length)}
+                    aria-label="Imagen anterior"
                     className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">‹</button>
                   <button onClick={() => setImgIndex(i => (i + 1) % images.length)}
+                    aria-label="Imagen siguiente"
                     className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-8 h-8 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">›</button>
                   <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
                     {images.map((_, i) => (
                       <button key={i} onClick={() => setImgIndex(i)}
+                        aria-label={`Ir a la imagen ${i + 1}`}
                         className={`w-2 h-2 rounded-full transition-colors ${i === imgIndex ? 'bg-white' : 'bg-white/40'}`} />
                     ))}
                   </div>
