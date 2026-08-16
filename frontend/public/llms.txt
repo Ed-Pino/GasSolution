@@ -1,35 +1,51 @@
-# GasSolutions Bogotá
+# GasSolutions Bogotá — llms.txt
+# Descripción estructurada para agentes de inteligencia artificial y navegadores LLM
 
-> Venta, instalación y mantenimiento de calentadores, estufas, hornos y gasodomésticos a gas natural en Bogotá, Colombia. Técnicos certificados Norma NTC.
+> GasSolutions Bogotá es una empresa especializada en la venta, instalación, mantenimiento y reparación de equipos de gas natural en Bogotá, Colombia. Técnicos certificados bajo la normativa NTC colombiana. Teléfono: 314 253 3524.
 
-## Páginas principales
+## Empresa
 
-- [Inicio](https://gassolutions.duckdns.org/): presentación de la empresa y acceso a productos y servicios
-- [Catálogo de Productos](https://gassolutions.duckdns.org/products): calentadores, estufas, hornos, insumos y repuestos certificados
-- [Servicios Técnicos](https://gassolutions.duckdns.org/services): instalación, mantenimiento, revisión y reparación de equipos a gas
-- [Sobre Nosotros](https://gassolutions.duckdns.org/about): misión, visión y datos de contacto
+- **Nombre**: GasSolutions Bogotá
+- **Actividad**: Venta de gasodomésticos y servicios técnicos de gas natural
+- **Ubicación**: Calle 2 # 93D-30, Bogotá, Colombia
+- **Teléfono**: +57 314 253 3524
+- **WhatsApp**: https://wa.me/573142533524
+- **Horario**: Lunes a sábado, 7:00 am – 6:00 pm
+- **Cobertura**: Toda Bogotá y municipios aledaños (Soacha, Chía, Cajicá, Zipaquirá, Funza, Mosquera)
+- **Certificaciones**: Normativa NTC colombiana; certificados válidos ante Vanti
 
-## Información de contacto
+## Categorías de Productos
 
-- Dirección: Calle 2 # 93D-30, Bogotá, Colombia
-- Teléfono: +57 314 253 3524
-- WhatsApp: wa.me/573142533524
-- Horario: lunes a sábado, 7:00 AM - 6:00 PM
+- **Calentadores de paso**: Bosch, Challenger, Rheem, Haceb, Cimsa, Exel — desde 6 hasta 14 litros por minuto
+- **Calentadores acumuladores**: Jacuzzi, Bosch — desde 50 litros
+- **Estufas a gas**: 2, 4 y 5 puestos; empotradas e independientes — Challenger, Haceb
+- **Hornos a gas**: Empotrable 60L y de piso 90L
+- **Insumos y repuestos**: Mangueras, válvulas, reguladores, termopares, quemadores, módulos electrónicos
 
-## Productos que ofrecemos
+## Servicios Técnicos
 
-- Calentadores a gas natural (Bosch, Challenger, Rheem)
-- Estufas y hornos a gas
-- Insumos y repuestos certificados
-- Gasodomésticos con garantía
+- Instalación de calentadores, estufas, hornos y chimeneas a gas natural
+- Mantenimiento preventivo de gasodomésticos
+- Reparación de calentadores, estufas y hornos
+- Revisión técnica de redes de gas (puntos de gas, fugas, ventilación)
+- Emisión de certificado técnico válido ante Vanti
 
-## Servicios que ofrecemos
+## Páginas Principales
 
-- Instalación de gasodomésticos certificada NTC
-- Mantenimiento preventivo de equipos a gas
-- Revisión y reparación de fugas de gas
-- Reparación de puntos de gas y ventilación
+- Inicio: /
+- Catálogo de productos: /products
+- Servicios técnicos: /services
+- Preguntas frecuentes: /faq
+- Sobre nosotros: /about
+- Términos y condiciones: /terms
+- Política de privacidad (Habeas Data): /privacy
+- Carrito de compras: /cart
 
-## Notas de contenido
+## Información Comercial
 
-Este sitio es una tienda en línea de equipos y servicios de gas natural ubicada en Bogotá, Colombia. El contenido está en español. Precios en pesos colombianos (COP). Los pedidos y servicios se agendan a través del sitio.
+- Precios en pesos colombianos (COP), incluyen IVA del 19%
+- Garantía de mano de obra en todas las instalaciones y reparaciones
+- Garantía de fábrica en todos los equipos nuevos
+- Certificado técnico NTC incluido en servicios de instalación
+- Carrito de compras sin necesidad de crear cuenta
+- Pago y coordinación de visita técnica al confirmar el pedido

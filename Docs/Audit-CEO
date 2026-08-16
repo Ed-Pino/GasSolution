@@ -56,3 +56,59 @@ Obtén enlaces entrantes desde portales del mismo sector, prensa local o mediant
 * **Screaming Frog SEO Spider:** Aplicación para rastrear tu sitio y detectar enlaces rotos, títulos duplicados o etiquetas faltantes.
 
 ¿Deseas que audite detalladamente las páginas de tu sitio web actual o alguna sección en específico?
+
+
+
+
+
+
+
+1. Sitemap incompleto — faltan /faq, /terms, /privacy y las URLs de productos individuales. Los bots no van a indexar esas páginas sin ellas.
+
+2. Dominio real vs IP — el sitio usa gassolutions.duckdns.org en los canonicals pero se sirve desde 18.117.48.68. Google penaliza cuando el canonical no coincide con la URL real. Hay que decidir el dominio definitivo y asegurarse de que sea accesible.
+
+3. Imágenes sin alt descriptivo — muchas imágenes usan el nombre del archivo como alt. Google usa el alt para indexar imágenes en Google Images.
+
+4. Velocidad / Core Web Vitals — las imágenes .png de logos (bosch.png, challenger.png) pesan 2MB+. Convertirlas a .webp mejoraría LCP significativamente.
+
+5. og:image específica por página — actualmente todas las páginas comparten el mismo logo como og:image. Cada categoría debería tener su propia imagen.
+
+6. No hay sitemap para imágenes — Google Images Sitemap permite indexar las fotos de productos.
+
+¿Cuál quieres que implemente primero? Te recomiendo empezar por 1 (sitemap completo) y 5 (og:image por página) porque tienen el mayor impacto con menos esfuerzo.
+
+Est. Credits Used: 1.74
+Elapsed time: 56s
+
+
+Checkpoint
+Restore
+en 2 dominio real que sugieres
+
+Kiro
+Para una empresa de servicios técnicos en Bogotá, lo ideal es un dominio .com.co — da señal local fuerte para búsquedas en Colombia y Google lo prioriza en resultados geográficos.
+
+Mis sugerencias en orden de preferencia:
+
+Dominio	Por qué
+gassolutions.com.co	Marca + extensión colombiana. Limpio y profesional.
+gassoluciones.com.co	Variante en español, mejor para SEO local
+tecnicogasnatural.com.co	Keyword exacta — muy potente para SEO orgánico
+calentadorbosch.com.co	Ultra específico, domina la búsqueda más frecuente
+gassolutions.co	Más corto, extensión nacional
+Mi recomendación concreta: gassolutions.com.co
+
+Mantiene tu marca actual
+.com.co indica Colombia a Google
+Fácil de comunicar verbalmente a clientes
+Costo: ~$25.000–$40.000 COP/año en registradores como NIC.co, GoDaddy Colombia o Hostinger
+Proceso para configurarlo con tu EC2:
+
+Compras el dominio en NIC.co o GoDaddy
+En el panel DNS del registrador, creas un registro A:
+@  →  18.117.48.68
+www →  18.117.48.68
+En la configuración de Nginx en el EC2, cambias server_name _; por server_name gassolutions.com.co www.gassolutions.com.co;
+Instalas SSL gratis con Let's Encrypt (certbot)
+Actualizas los canonicals en el código (gassolutions.duckdns.org → gassolutions.com.co)
+El SSL (HTTPS) es crítico — Google penaliza sitios sin HTTPS y Chrome muestra "No seguro" en HTTP puro.
