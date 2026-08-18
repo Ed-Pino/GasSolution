@@ -184,10 +184,15 @@ export default function HomePage() {
       </section>
 
       {/* ── INSTALLATION SECTION ─────────────────────────────── */}
-      <section
-        className="relative py-24 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/blueflames.jpg)' }}
-      >
+      <section className="relative py-24 overflow-hidden">
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/images/llamasazules.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
         <div className="absolute inset-0 bg-black/65" />
         <div className="relative max-w-4xl mx-auto px-6 text-center text-white">
           <h2 className="text-4xl font-bold mb-4">Instalación de Gasodomésticos</h2>
